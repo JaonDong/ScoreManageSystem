@@ -913,6 +913,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Core\Domain\School.cs" />
+    <Compile Include="Core\Domain\Customer.cs" />
+    <Compile Include="Core\Domain\Students\Subject.cs" />
+    <Compile Include="Core\Domain\Students\Student.cs" />
+    <Compile Include="Core\Domain\Teachers\Teacher.cs" />
     <Compile Include="Core\EfDbContext.cs" />
     <Compile Include="Core\Domain\BaseEntity.cs" />
     <Compile Include="Core\EfRepository.cs" />
@@ -934,8 +939,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Core\Domain\Students\" />
-    <Folder Include="Core\Domain\Teachers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
