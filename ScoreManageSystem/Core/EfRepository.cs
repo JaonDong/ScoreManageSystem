@@ -89,7 +89,10 @@ namespace ScoreManageSystem.Core
 
         public TEntity Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            AttachIfNot(entity);
+            Context.Entry(entity).State=EntityState.Modified;
+
+            return entity;
         }
 
         public TEntity Update(int id, Action<TEntity> updateAction)
@@ -101,12 +104,21 @@ namespace ScoreManageSystem.Core
 
         public void Delete(TEntity entity)
         {
-            throw new NotImplementedException();
+            AttachIfNot(entity);
+            //软删除 基础实现
+            //if(entity is IsSoffDelete)
+            //{
+            //  (entity as IsSoffDelete).IsDelete=true;    
+            //}
+            Table.Remove(entity);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var entity = Table.FirstOrDefault(e => e.Id == id);
+            if(entity==null)
+                throw new Exception("id为"+id+"的对象不存在");
+            Delete(entity);
         }
 
         public void Delete(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
